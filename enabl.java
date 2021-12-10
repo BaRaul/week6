@@ -15,7 +15,12 @@ public class addworklog {
 		// create driver
 		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
-
+		
+		// open test page
+		String url = "https://mycc-staging.n13.ro/profile";
+		driver.get(url);
+		System.out.println("Page is opened. ");
+		
 		// maximize browser window
 		driver.manage().window().maximize();
 
@@ -35,18 +40,16 @@ public class addworklog {
 		WebElement write3 = driver.findElement(By.id("comments-minutes-input"));
 		write3.sendKeys("cctestuser3@yopmail.com");
 		
-		// open test page
-		String url = "https://mycc-staging.n13.ro/profile";
-		driver.get(url);
-		System.out.println("Page is opened. ");
+		//click sign in
+		//no id
+
+		
 
 		// click the options in the upper left corner
 		WebElement click1 = driver.findElement(By.id("kt_aside_mobile_toggle"));
 		click1.click();
 		
-		//click sign in
-		//no id
-
+	
 		// click my timesheet
 		WebElement click2 = driver.findElement(By.id(""));// can't find the id here
 		click2.click();
