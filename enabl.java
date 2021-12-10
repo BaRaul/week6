@@ -1,98 +1,111 @@
 package com.herokuapp.theinternet;
 
-	import org.openqa.selenium.By;
-	import org.openqa.selenium.WebDriver;
-	import org.openqa.selenium.WebElement;
-	import org.openqa.selenium.chrome.ChromeDriver;
-	import org.openqa.selenium.firefox.FirefoxDriver;
-	import org.openqa.selenium.support.ui.ExpectedConditions;
-	import org.openqa.selenium.support.ui.WebDriverWait;
-	import org.testng.Assert;
-	import org.testng.annotations.AfterMethod;
-	import org.testng.annotations.BeforeMethod;
-	import org.testng.annotations.Optional;
-	import org.testng.annotations.Parameters;
-	import org.testng.annotations.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
-public class enabl {
-		private WebDriver driver;
+public class addworklog {
+	@Test
+	public void loginTest() {
+		System.out.println("Start test");
 
-		@Parameters({ "browser" })
-		@BeforeMethod(alwaysRun = true)
-		private void setUp(@Optional("chrome") String browser) {
-//			Create driver
-			switch (browser) {
-			case "chrome":
-				System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-				driver = new ChromeDriver();
-				break;
+		// create driver
+		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
 
-			case "firefox":
-				System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
-				driver = new FirefoxDriver();
-				break;
+		// maximize browser window
+		driver.manage().window().maximize();
 
-			default:
-				System.out.println("Do not know how to start " + browser + ", starting chrome instead");
-				System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-				driver = new ChromeDriver();
-				break;
-			}
-
-			// sleep for 3 seconds
-			sleep(3000);
-
-			// maximize browser window
-			driver.manage().window().maximize();
-			
-			// implicit wait
-			//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		}
+		//login
+		//click on email bar
+		//no id
 		
+		//enter email cctestuser3@yopmail.com
+		WebElement write2 = driver.findElement(By.id("comments-minutes-input"));
+		write2.sendKeys("cctestuser3@yopmail.com");
 		
+		//click on password bar
+		//no id
 		
+		//enter password CCTest@2021
+		//enter email cctestuser3@yopmail.com
+		WebElement write3 = driver.findElement(By.id("comments-minutes-input"));
+		write3.sendKeys("cctestuser3@yopmail.com");
 		
-		
-		@Test
-		public void notVisibleTest() {
-			// open the page http://the-internet.herokuapp.com/dynamic_loading/1
-			driver.get("http://the-internet.herokuapp.com/dynamic_loading/1");
-			
-			// Find locator for startButton and click on it
-			WebElement startButton = driver.findElement(By.xpath("//div[@id='start']/button"));
-			startButton.click();
-			
-			// Then get finish element text
-			WebElement finishElement = driver.findElement(By.id("finish"));
-			
-			WebDriverWait wait = new WebDriverWait(driver, 10);
-			wait.until(ExpectedConditions.visibilityOf(finishElement));
-			
-			String finishText = finishElement.getText();
-			
-			// compare actual finish element text with expected "Hello World!" using Test NG Assert class
-			Assert.assertTrue(finishText.contains("Hello World!"), "Finish text: " + finishText);
-			
-			//startButton.click();
-			
-		}
-		
-		
-		
+		// open test page
+		String url = "https://mycc-staging.n13.ro/profile";
+		driver.get(url);
+		System.out.println("Page is opened. ");
 
-		private void sleep(long m) {
-			try {
-				Thread.sleep(m);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
+		// click the options in the upper left corner
+		WebElement click1 = driver.findElement(By.id("kt_aside_mobile_toggle"));
+		click1.click();
+		
+		//click sign in
+		//no id
 
-		@AfterMethod(alwaysRun = true)
-		private void tearDown() {
-			// Close browser
-			driver.quit();
-		}
+		// click my timesheet
+		WebElement click2 = driver.findElement(By.id(""));// can't find the id here
+		click2.click();
 
+		// click my calendar
+		WebElement click3 = driver.findElement(By.name(""));// can't find id
+		click3.click();
+
+		// click on a date
+		WebElement click4 = driver.findElement(By.id(""));// no id
+		click4.click();
+
+		// click on project
+		WebElement click5 = driver.findElement(By.id("project-input"));// no id
+		click5.click();
+
+		// choose my cc test project
+		// cannot hover over the options, my choice is set automatically since I first
+		// chose an option
+
+		// click on task
+		WebElement click6 = driver.findElement(By.id("task-input"));
+		click6.click();
+
+		// choose development back test
+		// cannot hover over the options, my choice is set automatically since I first
+		// chose an option
+
+		// click on hours
+		// cannot find id
+
+		// choose hours
+		// cannot hover over options
+
+		// choose minutes
+		// cannot hover over options
+
+		// click on comments
+		WebElement click7 = driver.findElement(By.id("comments-minutes-input"));
+		click7.click();
+
+		// write "I need twenty characters. At least!"
+		WebElement write1 = driver.findElement(By.id("comments-minutes-input"));
+		write1.sendKeys("I need twenty characters. At least!");
+
+		// click save log
+		// cannot find id
+
+		// verification:
+		
+		  //new url 
+		  String expectedUrl = "https://mycc-staging.n13.ro/timesheet/calendar?calendarView=month";
+		  String actualUrl = driver.getCurrentUrl(); Assert.assertEquals(actualUrl,
+		  expectedUrl, "Actual page is not the same as expected");
+
+		  //the day is not empty in calendar
+		  //don't know how to check
+		  
+		// close browser
+		driver.quit();
 	}
-
+}
