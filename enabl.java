@@ -26,14 +26,18 @@ public class addworklog {
 
 		//login
 		//click on email bar
-		//no id
+		//xpath //*[@id="example-input-group-1"]/input
+		WebElement clicka = driver.findElement(By.xpath("//*[@id=\"example-input-group-1\"]/input"));
+		clicka.click();
 		
 		//enter email cctestuser3@yopmail.com
 		WebElement write2 = driver.findElement(By.id("comments-minutes-input"));
 		write2.sendKeys("cctestuser3@yopmail.com");
 		
 		//click on password bar
-		//no id
+		//xpath //*[@id="example-input-group-2"]/input
+		WebElement clickb = driver.findElement(By.xpath("//*[@id=\"example-input-group-2\"]/input"));
+		clickb.click();
 		
 		//enter password CCTest@2021
 		//enter email cctestuser3@yopmail.com
@@ -41,9 +45,8 @@ public class addworklog {
 		write3.sendKeys("cctestuser3@yopmail.com");
 		
 		//click sign in
-		//no id
-
-		
+		WebElement clickc = driver.findElement(By.xpath("//*[@id=\"kt_login_signin_form\"]/div[4]/div/div/button"));
+		clickc.click();
 
 		// click the options in the upper left corner
 		WebElement click1 = driver.findElement(By.id("kt_aside_mobile_toggle"));
@@ -79,7 +82,8 @@ public class addworklog {
 		// chose an option
 
 		// click on hours
-		// cannot find id
+		WebElement clicke = driver.findElement(By.xpath("//*[@id=\"__BVID__908\"]/div/span/input"));
+		clicke.click();
 
 		// choose hours
 		// cannot hover over options
@@ -96,8 +100,10 @@ public class addworklog {
 		write1.sendKeys("I need twenty characters. At least!");
 
 		// click save log
-		// cannot find id
-
+		// cannot find id   //*[@id="logWorkModal___BV_modal_footer_"]/div/div/button
+		WebElement click7 = driver.findElement(By.xpath("//*[@id=\"logWorkModal___BV_modal_footer_\"]/div/div/button"));
+		click7.click();
+		
 		// verification:
 		
 		  //new url 
